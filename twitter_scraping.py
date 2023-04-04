@@ -21,9 +21,6 @@ st.title('_:red[Twitter Scraper]_')
 
 # Required variables:
 
-client = pymongo.MongoClient("mongodb://localhost:27017/")        # To connect to MongoDB
-mydb = client["Twitter"]                                          # To create a database
-
 option = st.radio('How you would like to search for tweets:',('Keyword', 'Hashtag'), horizontal = True)
 
 if option == "Keyword":
@@ -89,10 +86,11 @@ else:
 
 tweets_df = pd.DataFrame(tweets_list, columns = (["Datetime", "User_ID", "Username", "Language", "TweetContent",
                                                   "Source", "URL", "LikeCount", "RetweetCount", "ReplyCount"]))
+tweets_df.index = range(1, len(tweets_df) + 1)
 
-# Creating 4 tabs to carry out 4 different actions with the data scrapped:
+# Creating 2 tabs to carry out 2 different actions with the data scrapped:
 
-show, download, upload, saved = st.tabs(["SHOW", "DOWNLOAD", "UPLOAD TO MONGO_DB", "SAVED COLLECTIONS"])
+show, download = st.tabs(["SHOW", "DOWNLOAD"])
 
 # Displaying scraped data stored in dataframe:
 
@@ -116,40 +114,42 @@ with download:
 
 # Uploading the scraped data into MongoDB:
 
-with upload:
-    if st.button('UPLOAD TO MONGO_DB'):
-        
-        # Set the scraped word, date and data
-        scraped_word = word
-        scraped_date = tday.strftime('%d/%m/%Y')
-        scraped_data = tweets_df.to_dict("records") 
+with st.sidebar:
+    st.write('# MongoDB')
+    st.write('### Upload Data')
 
-        # Create a dictionary with the scraped data
-        scraped_doc = {'Scraped Word': scraped_word,
-                       'Scraped Date': scraped_date,
-                       'Scraped Data': scraped_data}
-        # creating new collection
+    # Set the scraped word, date and data
+    scraped_word = word
+    scraped_date = tday.strftime('%d/%m/%Y')
+    scraped_data = tweets_df.to_dict("records") 
+
+    # Create a dictionary with the scraped data
+    scraped_doc = {'Scraped Word': scraped_word,
+                    'Scraped Date': scraped_date,
+                    'Scraped Data': scraped_data}
+    
+    uri = st.text_input('Enter your MongoDB URI', 'mongodb://localhost:27017/')
+    upload = st.button("UPLOAD")
+
+    # --- Initialising SessionState ---
+    
+    if "upload_state" not in st.session_state:
+        st.session_state.upload_state = False
+
+    if upload or st.session_state.upload_state:
+        st.session_state.upload_state = True
+
+        client = pymongo.MongoClient(uri)
+        mydb = client["Twitter"]
         collection = mydb[f'{word}_tweets']
+        collection.insert_one(scraped_doc)
+        st.success('Successfully uploaded to database', icon="✅")
 
-        if scraped_data:
-            collection.insert_one(scraped_doc)
-            st.success('Successfully uploaded to database', icon="✅")
-        else:
-            st.error('Can\'t upload to database as no tweets scraped.', icon="⚠️")
-
-# Displaying already saved files:
-
-with saved:
-    st.write('Uploaded Datasets: ')
-    for i in mydb.list_collection_names():
-        collection = mydb[i]        
-        if st.button(i):            
-            df = pd.DataFrame(list(collection.find()))
-            st.dataframe(df)
-
-# Creating sidebar to display essential infos:
-
-with st.sidebar:   
-    st.info('Details Pane:', icon = "ℹ️")
-    st.info(f'The {option.lower()} chosen for search is {word}')
-    st.info(f"Tweets scraped from {start.strftime('%d/%m/%Y')} to {end.strftime('%d/%m/%Y')}.") 
+with st.sidebar:
+    client = pymongo.MongoClient(uri)
+    mydb = client["Twitter"]
+    collection_history = pd.DataFrame(mydb.list_collection_names(), columns=["Collection History"])[::-1]
+    collection_history.index = range(1, len(collection_history) + 1)
+    st.write("\n\n")
+    st.markdown('### Collection History')
+    st.dataframe(collection_history, use_container_width=True)

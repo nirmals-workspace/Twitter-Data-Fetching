@@ -1,14 +1,15 @@
 # Twitter scraping web app
 
-Twitter is a powerful platform for accessing real-time information, and it can be a valuable source of data for a variety of applications. However, collecting and analyzing data from Twitter can be a challenging task, especially for those without specialized technical skills. In this context, a web app that simplifies the process of scraping Twitter data and provides useful features for analyzing and visualizing the data can be a useful tool for researchers, journalists, businesses, and individuals. This is an open source web app that allows you to scrape tweets from Twitter using the snscrape library, visualize the data using Streamlit and upload the scraped content to Mongo DB for future usage. It has been developed by me, Nirmal Kumar, a data science enthusiast and Python developer. The app is intended for educational and research purposes only, and should not be used for any commercial or unethical activities.
+Twitter is a powerful platform for accessing real-time information, and it can be a valuable source of data for a variety of applications. However, collecting and analyzing data from Twitter can be a challenging task, especially for those without specialized technical skills. In this context, a web app that simplifies the process of scraping Twitter data and provides useful features for analyzing and visualizing the data can be a useful tool for researchers, journalists, businesses, and individuals. This is an open source web app that allows you to scrape tweets from Twitter using the snscrape library, visualize the data using Streamlit and upload the scraped content to Mongo DB for future usage. It has been developed by me, Nirmal Kumar, a Data science enthusiast and Python developer. The app is intended for educational and research purposes only, and should not be used for any commercial or unethical activities.
 
 ## Prerequisites
 
 Before you begin, you will need to have a few tools installed on your machine:
 
-* Python 3.7 or higher. [Note: Streamlit only supports .py files as of now. So, notebook(.ipynb) files are not recommended]
-* The snscrape, pandas and streamlit, pymongo packages.
+* Python 3.7 or higher.
+    [Note: Streamlit only supports .py files as of now. So, notebook(.ipynb) files are not recommended]
 * MongoDB software.
+* The snscrape, pandas and streamlit, pymongo packages.
 
 ### Python
 
@@ -56,24 +57,27 @@ Scraping tweets using Streamlit is legal, but it is important to ensure that you
 5. You can also view your selected options under the **Details Pane:** in the sidebar to ensure accuracy.
 6. Select number of tweets to scrape
 7. Click on the **Scrape Tweets** button
-8. Use the four tabs – **SHOW**, **DOWNLOAD**, **UPLOAD TO MONGO_DB**, **SAVED COLLECTIONS** – to carry out operations on the scrapped data
+8. Use the two tabs – **SHOW**, **DOWNLOAD** – to view the scraped data then and there and you can download scraped tweets in .csv or .json format
+9. In the sidebar  you can  **UPLOAD DATA TO MONGO_DB**  and you can view the **COLLECTIONS HISTORY**
 
 ## Developer Guide
 
 To run the app, follow these steps:
 
-Clone the repository to your local machine using the following command: git clone [repository URL].
-Install the required libraries by running the following command: pip install -r requirements.txt.
-Open the twitter_scraper.py file in a code editor.
-Open a terminal window and navigate to the directory where the app is located using the following command: cd [app directory].
-Run the command streamlit run twitter_scraper.py to start the app.
-The app should now be running on a local server. If it doesn't start automatically, you can access it by going to Local URL: [http://localhost:8501] or Network URL: [http://192.168.43.83:8501].
+    1. Clone the repository to your local machine using the following command: git clone [https://github.com/Nirmal7781/Twitter_scrapping.git].
+    2. Install the required libraries by running the following command: pip install -r requirements.txt.
+    3. Open the twitter_scraper.py file in a code editor.
+    4. Open a terminal window and navigate to the directory where the app is located using the following command: cd [.py file directory].
+    5. Run the command streamlit run twitter_scraper.py to start the app.
+    6. The app should now be running on a local server. If it doesn't start automatically, you can access it by going to either 
+        * Local URL: [http://localhost:8501] or * Network URL: [http://192.168.43.83:8501].
 
 To modify the app, you can:
-Add filters to the search results table to allow users to sort and filter the results.
-Add a visualization of the search results, such as a word cloud or a chart.
-Allow users to save their search queries for future use.
-Use machine learning algorithms to perform sentiment analysis on the tweets and display the results.
+
+    1. Add filters to the search results table to allow users to sort and filter the results.
+    2. Add a visualization of the search results, such as a word cloud or a chart.
+    3. Allow users to save their search queries for future use.
+    4. Use machine learning algorithms to perform sentiment analysis on the tweets and display the results.
 
 ## Potential Applications
 
@@ -84,10 +88,28 @@ Use machine learning algorithms to perform sentiment analysis on the tweets and 
 5. Academic research: A researcher can use the app to collect data from Twitter for academic studies, such as sentiment analysis or social network analysis.
 6. Political analysis: A political analyst can use the app to monitor public opinion on political issues and track the social media activity of political candidates and parties.
 
+## Potential issue with the app
+
+Before knowing about the issue let's know a bit about session_state in streamlit.
+
+    ### What is session state and why it came into picture?
+
+            Session state is a powerful feature in Streamlit that allows for the creation of dynamic and interactive apps with a more reactive user interface. Session state came into the picture because **Streamlit is a stateless framework**, which means that **each time a user interacts with the app, the entire script is re-executed from top to bottom**. This can lead to performance issues and can make it difficult to create interactive apps that rely on storing user data across multiple interactions.
+
+            To solve this problem, Streamlit introduced the session state feature, which allows the app to store and retrieve data across multiple interactions without the need to re-execute the entire script. This makes it easier to create dynamic and interactive apps that can respond to user input in real-time.
+
+            Thus, session state came into the picture to solve the problem of state management in stateless frameworks like Streamlit.
+
+Now the potential issue here is eventhough session_state is a powerful feature it's still under development and this could cause the app to rerun on its own from top to bottom even if we use session_state feature to prevent this action.
+
+## Web App Snap
+
+![Twitter Scraper](https://i.imgur.com/abc123.jpg)
+
 ## Disclaimer
 
 This application is intended for educational and research purposes only and should not be used for any commercial or unethical activities.
 
 ## Contact
 
-If you have any questions, comments, or suggestions for the app, please feel free to contact me at nirmal.works@outlook.com
+If you have any questions, comments, or suggestions for the app, please feel free to contact me at [nirmal.works@outlook.com]

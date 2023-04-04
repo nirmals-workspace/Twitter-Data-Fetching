@@ -98,21 +98,33 @@ To modify the app, you can:
 
 ## Potential issue with the app
 
-Before knowing about the issue let's know a bit about session_state in streamlit.
+1. Before knowing about this issue let's know a bit about session_state in streamlit.
 
     ### What is session state and why it came into picture?
 
-            Session state is a powerful feature in Streamlit that allows for the creation of dynamic and interactive apps with a more reactive user interface. Session state came into the picture because **Streamlit is a stateless framework**, which means that **each time a user interacts with the app, the entire script is re-executed from top to bottom**. This can lead to performance issues and can make it difficult to create interactive apps that rely on storing user data across multiple interactions.
+    Session state is a powerful feature in Streamlit that allows for the creation of dynamic and interactive apps with a more reactive user interface. Session state came into the picture because **Streamlit is a stateless framework**, which means that **each time a user interacts with the app, the entire script is re-executed from top to bottom**. This can lead to performance issues and can make it difficult to create interactive apps that rely on storing user data across multiple interactions.
 
-            To solve this problem, Streamlit introduced the session state feature, which allows the app to store and retrieve data across multiple interactions without the need to re-execute the entire script. This makes it easier to create dynamic and interactive apps that can respond to user input in real-time.
+    To solve this problem, Streamlit introduced the session state feature, which allows the app to store and retrieve data across multiple interactions without the need to re-execute the entire script. This makes it easier to create dynamic and interactive apps that can respond to user input in real-time.
 
-            Thus, session state came into the picture to solve the problem of state management in stateless frameworks like Streamlit.
+    Thus, session state came into the picture to solve the problem of state management in stateless frameworks like Streamlit.
 
-Now the potential issue here is eventhough session_state is a powerful feature it's still under development and this could cause the app to rerun on its own from top to bottom even if we use session_state feature to prevent this action.
+  Now the potential issue here is eventhough session_state is a powerful feature it's still under development and this could cause the app to rerun on its own from top to bottom even if we use session_state feature to prevent this action.
+
+2. This app would work extremely well and good every aspect that I have mentioned above in local server. But when you deploy it in cloud you can't uuse pymongo there to upload the dataset to MongoDB. This is a persistent issue that most developers acknowledge this issue in streamlit community forum and we have to wait a bit more to get this rectified.
+    ![The issue mentioned above]()
+    ![Sample for streamlit community's acknowledgement of the issue]()
 
 ## Web App Snap
 
-![Twitter Scraper](https://i.imgur.com/abc123.jpg)
+![Twitter Scraper](https://github.com/Nirmal7781/Twitter_scrapping/blob/888c4af80f2ff4ce6cccdedd992584db1f30cb8f/ts_web_app.png)
+
+## Web App Demo Video
+
+[Demo Video][https://www.linkedin.com/posts/nirmal-kumar-600203263_twitter-datascience-webapp-activity-7049124308266225664-8jWQ?utm_source=share&utm_medium=member_desktop]
+
+## Streamlit web URL
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://nirmal7781-twitter-scrapping-twitter-scraping-t11msc.streamlit.app/)
 
 ## Disclaimer
 

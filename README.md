@@ -108,11 +108,13 @@ To modify the app, you can:
 
     Thus, session state came into the picture to solve the problem of state management in stateless frameworks like Streamlit.
 
-  Now the potential issue here is eventhough session_state is a powerful feature it's still under development and this could cause the app to rerun on its own from top to bottom even if we use session_state feature to prevent this action.
+    Now the potential issue here is eventhough session_state is a powerful feature it's still under development and this could cause the app to rerun on its own from top to bottom even if we use session_state feature to prevent this action.
 
-2. This app would work extremely well and good every aspect that I have mentioned above in local server. But when you deploy it in cloud you can't uuse pymongo there to upload the dataset to MongoDB. This is a persistent issue that most developers acknowledge this issue in streamlit community forum and we have to wait a bit more to get this rectified.
-    ![The issue mentioned above]()
-    ![Sample for streamlit community's acknowledgement of the issue]()
+2. This app would work extremely well and good every aspect that I have mentioned above in local server. But when you deploy it in cloud you can't use pymongo there to upload the dataset to MongoDB. This is a persistent issue that most developers acknowledge this issue in streamlit community forum and we have to wait a bit more to get this rectified.
+
+    ![The issue mentioned above](https://github.com/Nirmal7781/Twitter_scrapping/blob/68223e395a66f8db5441d3e3ba4e3ada5279ddb9/Error.png)
+
+    ![Sample for streamlit community's acknowledgement of the issue](https://github.com/Nirmal7781/Twitter_scrapping/blob/68223e395a66f8db5441d3e3ba4e3ada5279ddb9/Community%20acknowledgement.png)
 
 ## Web App Snap
 

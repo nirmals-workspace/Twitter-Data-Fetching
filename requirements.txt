@@ -1,4 +1,4 @@
-snscrape
-streamlit
-pymongo
-pandas
+snscrape==0.6.2.20230320
+streamlit==1.20.0
+pymongo==4.3.3
+pandas==1.5.3

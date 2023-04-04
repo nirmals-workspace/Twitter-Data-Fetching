@@ -96,7 +96,7 @@ To modify the app, you can:
 
 6. Political analysis: A political analyst can use the app to monitor public opinion on political issues and track the social media activity of political candidates and parties.
 
-## Potential issue with the app
+## Potential issues with the app
 
 1. Before knowing about this issue let's know a bit about session_state in streamlit.
 
@@ -110,7 +110,7 @@ To modify the app, you can:
 
     Now the potential issue here is eventhough session_state is a powerful feature it's still under development and this could cause the app to rerun on its own from top to bottom even if we use session_state feature to prevent this action.
 
-2. This app would work extremely well and good every aspect that I have mentioned above in local server. But when you deploy it in cloud you can't use pymongo there to upload the dataset to MongoDB. This is a persistent issue that most developers acknowledge this issue in streamlit community forum and we have to wait a bit more to get this rectified.
+2. This app would work extremely well and good on local server in every aspect that I have mentioned above. But when you deploy it in cloud you can't use pymongo there to upload the dataset to MongoDB. This is a persistent issue and most developers acknowledge this issue in streamlit community forum and we have to wait a bit more to get this rectified.
 
     ![The issue mentioned above](https://github.com/Nirmal7781/Twitter_scrapping/blob/68223e395a66f8db5441d3e3ba4e3ada5279ddb9/Error.png)
 

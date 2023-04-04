@@ -6,14 +6,15 @@ Twitter is a powerful platform for accessing real-time information, and it can b
 
 Before you begin, you will need to have a few tools installed on your machine:
 
-* Python 3.7 or higher. [Note: Streamlit only supports .py files as of now. So, notebook(.ipynb) files are not recommended]
+* Python 3.7 or higher. [Note: Streamlit only acccepts raw python files(.py) and not notebook files(.ipynb) as of now. Use an interface accordingly]
+
 * The snscrape, pandas and streamlit, pymongo packages.
+
 * MongoDB software.
 
 ### Python
 
 Python is the programming language used to develop this project. It is a popular high-level programming language known for its readability and versatility. It is widely used for web development, data analysis, and machine learning. It provides a powerful and flexible foundation for scraping and analyzing Twitter data.
-[Note that streamlit only acccepts raw python files(.py) and not notebook files(.ipynb) as of now. Use an interface accordingly]
 
 ### MongoDB
 
@@ -41,11 +42,15 @@ Scraping tweets using Streamlit is legal, but it is important to ensure that you
 
 ## Features
 
-**Search and Filter: You can search and filter the scraped tweets based on various criteria such as hashtags, keywords, and dates. This feature makes it easy to find relevant tweets for analysis or research purposes.
-**Display Results: The app allows for easy creation of user interfaces. You can view the scraped tweets in an interactive and visually appealing way. But here I just used dataframe to display the scraped tweets.
-**Download Data: You can easily download the scraped tweets in various formats such as CSV or JSON, making it easy to use the data in other applications or for further analysis.
-**Save to MongoDB: The app also provides the option to upload the scraped tweets to MongoDB using the PyMongo library. This allows for easy storage and retrieval of large volumes of data.
-**View saved collection history: You can view what collections you uploaded previously to MongoDB server.
+* Search and Filter: You can search and filter the scraped tweets based on various criteria such as hashtags, keywords, and dates. This feature makes it easy to find relevant tweets for analysis or research purposes.
+
+* Display Results: The app allows for easy creation of user interfaces. You can view the scraped tweets in an interactive and visually appealing way. But here I just used dataframe to display the scraped tweets.
+
+* Download Data: You can easily download the scraped tweets in various formats such as CSV or JSON, making it easy to use the data in other applications or for further analysis.
+
+* Save to MongoDB: The app also provides the option to upload the scraped tweets to MongoDB using the PyMongo library. This allows for easy storage and retrieval of large volumes of data.
+
+* View saved collection history: You can view what collections you uploaded previously to MongoDB server.
 
 ## User Guide
 
@@ -62,26 +67,35 @@ Scraping tweets using Streamlit is legal, but it is important to ensure that you
 
 To run the app, follow these steps:
 
-Clone the repository to your local machine using the following command: git clone [repository URL].
-Install the required libraries by running the following command: pip install -r requirements.txt.
-Open the twitter_scraper.py file in a code editor.
-Open a terminal window and navigate to the directory where the app is located using the following command: cd [app directory].
-Run the command streamlit run twitter_scraper.py to start the app.
-The app should now be running on a local server. If it doesn't start automatically, you can access it by going to Local URL: [http://localhost:8501] or Network URL: [http://192.168.43.83:8501].
+1. Clone the repository to your local machine using the following command: git clone [(https://github.com/Nirmal7781/Twitter_scrapping.git)].
+2. Install the required libraries by running the following command: pip install -r requirements.txt.
+3. Open the twitter_scraper.py file in a code editor.
+4. pen a terminal window and navigate to the directory where the app is located using the following command: cd [app directory].
+5. Run the command streamlit run twitter_scraper.py to start the app.
+6. The app should now be running on a local server. If it doesn't start automatically, you can access it by going to Local URL: [http://localhost:8501] or Network URL: [http://192.168.43.83:8501].
 
 To modify the app, you can:
-Add filters to the search results table to allow users to sort and filter the results.
-Add a visualization of the search results, such as a word cloud or a chart.
-Allow users to save their search queries for future use.
-Use machine learning algorithms to perform sentiment analysis on the tweets and display the results.
+
+    Add filters to the search results table to allow users to sort and filter the results.
+
+    Add a visualization of the search results, such as a word cloud or a chart.
+
+    Allow users to save their search queries for future use.
+
+    Use machine learning algorithms to perform sentiment analysis on the tweets and display the results.
 
 ## Potential Applications
 
 1. Social media monitoring: A company can use the app to monitor mentions of its brand on Twitter and analyze the sentiment of those mentions.
+
 2. Influencer marketing: An influencer can use the app to track their own social media presence and engagement metrics, or to identify other influencers in their industry.
+
 3. Market research: A business can use the app to monitor conversations about their industry on Twitter and gather insights on consumer behavior, preferences, and trends.
+
 4. News and journalism: A journalist can use the app to track breaking news and trending topics on Twitter and gather data for a news story.
+
 5. Academic research: A researcher can use the app to collect data from Twitter for academic studies, such as sentiment analysis or social network analysis.
+
 6. Political analysis: A political analyst can use the app to monitor public opinion on political issues and track the social media activity of political candidates and parties.
 
 ## Disclaimer

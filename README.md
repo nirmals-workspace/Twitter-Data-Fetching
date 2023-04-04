@@ -11,28 +11,27 @@ Before you begin, you will need to have a few tools installed on your machine:
 * MongoDB software.
 * The snscrape, pandas and streamlit, pymongo packages.
 
-### Python
+#### Python
 
 Python is the programming language used to develop this project. It is a popular high-level programming language known for its readability and versatility. It is widely used for web development, data analysis, and machine learning. It provides a powerful and flexible foundation for scraping and analyzing Twitter data.
-[Note that streamlit only acccepts raw python files(.py) and not notebook files(.ipynb) as of now. Use an interface accordingly]
 
-### MongoDB
+#### MongoDB
 
 MongoDB is a cross-platform document-oriented database program. It uses JSON-like documents with optional schemas and is classified as a NoSQL database. We used it here to store the scraped Twitter data. It provides a flexible and scalable solution for managing large amounts of data.
 
-### SNScrape
+#### SNScrape
 
 SNScrape is a Python library that allows you to scrape social media data without using an API or request limits. Moreover, you don't even need an active account to scrape content when you use snscrape. It supports a variety of platforms including Twitter, Facebook, and Instagram. We used it here to scrape tweets from Twitter. It provides greater flexibility and control over the data we collect.
 
-### Streamlit
+#### Streamlit
 
 Streamlit is an open-source Python library that makes it easy to create and share custom web apps for machine learning and data science. We used it here to deploy our project as a web app. It makes it easy to create an interactive user interface for exploring and visualizing the scraped Twitter data.
 
-### PyMongo
+#### PyMongo
 
 PyMongo is a Python distribution containing tools for working with MongoDB. We used it here to connect to a MongoDB server and perform database operations using Python.
 
-### Pandas
+#### Pandas
 
 Pandas is a popular Python library used for data manipulation and analysis. We used pandas to convert scraped tweets list into dataframe and to convert dataframe into .csv, .json and .dict formats
 
@@ -42,11 +41,15 @@ Scraping tweets using Streamlit is legal, but it is important to ensure that you
 
 ## Features
 
-**Search and Filter: You can search and filter the scraped tweets based on various criteria such as hashtags, keywords, and dates. This feature makes it easy to find relevant tweets for analysis or research purposes.
-**Display Results: The app allows for easy creation of user interfaces. You can view the scraped tweets in an interactive and visually appealing way. But here I just used dataframe to display the scraped tweets.
-**Download Data: You can easily download the scraped tweets in various formats such as CSV or JSON, making it easy to use the data in other applications or for further analysis.
-**Save to MongoDB: The app also provides the option to upload the scraped tweets to MongoDB using the PyMongo library. This allows for easy storage and retrieval of large volumes of data.
-**View saved collection history: You can view what collections you uploaded previously to MongoDB server.
+* ##### Search and Filter: You can search and filter the scraped tweets based on various criteria such as hashtags, keywords, and dates. This feature makes it easy to find relevant tweets for analysis or research purposes.
+
+* ##### Display Results: The app allows for easy creation of user interfaces. You can view the scraped tweets in an interactive and visually appealing way. But here I just used dataframe to display the scraped tweets.
+
+* ##### Download Data: You can easily download the scraped tweets in various formats such as CSV or JSON, making it easy to use the data in other applications or for further analysis.
+
+* ##### Save to MongoDB: The app also provides the option to upload the scraped tweets to MongoDB using the PyMongo library. This allows for easy storage and retrieval of large volumes of data.
+
+* ##### View saved collection history: You can view what collections you uploaded previously to MongoDB server.
 
 ## User Guide
 
@@ -82,10 +85,15 @@ To modify the app, you can:
 ## Potential Applications
 
 1. Social media monitoring: A company can use the app to monitor mentions of its brand on Twitter and analyze the sentiment of those mentions.
+
 2. Influencer marketing: An influencer can use the app to track their own social media presence and engagement metrics, or to identify other influencers in their industry.
+
 3. Market research: A business can use the app to monitor conversations about their industry on Twitter and gather insights on consumer behavior, preferences, and trends.
+
 4. News and journalism: A journalist can use the app to track breaking news and trending topics on Twitter and gather data for a news story.
+
 5. Academic research: A researcher can use the app to collect data from Twitter for academic studies, such as sentiment analysis or social network analysis.
+
 6. Political analysis: A political analyst can use the app to monitor public opinion on political issues and track the social media activity of political candidates and parties.
 
 ## Potential issue with the app

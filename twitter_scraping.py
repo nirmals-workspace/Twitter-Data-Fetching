@@ -148,7 +148,7 @@ with st.sidebar:
 with st.sidebar:
     client = pymongo.MongoClient(uri)
     mydb = client["Twitter"]
-    collection_history = pd.DataFrame(mydb.list_collection_names(), columns=["Collection History"])[::-1]
+    collection_history = pd.DataFrame(mydb.list_collection_names(), columns=["Collection History"])
     collection_history.index = range(1, len(collection_history) + 1)
     st.write("\n\n")
     st.markdown('### Collection History')

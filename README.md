@@ -35,7 +35,7 @@ PyMongo is a Python distribution containing tools for working with MongoDB. We u
 
 Pandas is a popular Python library used for data manipulation and analysis. We used pandas to convert scraped tweets list into dataframe and to convert dataframe into .csv, .json and .dict formats
 
-## Ethical perspective of scraping tweets using streamlit
+## Ethical perspective of scraping tweets using snscrape
 
 Scraping tweets using Streamlit is legal, but it is important to ensure that you are not violating any applicable laws or the terms of service of Twitter. It is always recommended to obtain explicit consent from Twitter users before scraping their tweets, and to use ethical and responsible scraping practices. Streamlit provides a convenient way to scrape up to 100,000 tweets, which is considered to be well within Twitter's guidelines and framework.
 

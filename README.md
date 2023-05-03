@@ -122,7 +122,7 @@ To modify the app, you can:
 
 ## Web App Demo Video
 
-![Demo video](https://www.linkedin.com/feed/update/urn:li:video:64248010255998856904/)
+![Demo Video](https://www.linkedin.com/posts/nirmal-kumar-600203263_twitter-datascience-webapp-activity-7049124308266225664-8jWQ?utm_source=share&utm_medium=member_desktop)
 
 ## Streamlit web URL
 

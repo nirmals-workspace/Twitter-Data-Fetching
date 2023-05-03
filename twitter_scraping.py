@@ -128,7 +128,10 @@ with st.sidebar:
                     'Scraped Date': scraped_date,
                     'Scraped Data': scraped_data}
     
-    uri = st.text_input('Enter your MongoDB URI', 'mongodb://localhost:27017/')
+    @st.cache_resource
+    def init_connection():
+        return pymongo.MongoClient(**st.secrets["mongo"])
+
     upload = st.button("UPLOAD")
 
     # --- Initialising SessionState ---
@@ -139,14 +142,14 @@ with st.sidebar:
     if upload or st.session_state.upload_state:
         st.session_state.upload_state = True
 
-        client = pymongo.MongoClient(uri)
+        client = init_connection()
         mydb = client["Twitter"]
         collection = mydb[f'{word}_tweets']
         collection.insert_one(scraped_doc)
         st.success('Successfully uploaded to database', icon="✅")
 
 with st.sidebar:
-    client = pymongo.MongoClient(uri)
+    client = init_connection()
     mydb = client["Twitter"]
     collection_history = pd.DataFrame(mydb.list_collection_names(), columns=["Collection History"])
     collection_history.index = range(1, len(collection_history) + 1)

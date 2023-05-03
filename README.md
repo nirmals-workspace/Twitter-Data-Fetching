@@ -122,7 +122,7 @@ To modify the app, you can:
 
 ## Web App Demo Video
 
-[Demo Video](https://github.com/Nirmal7781/Twitter_scrapping/blob/ada036b684ec231ac6ce7012cd951fe41980eae1/Related%20Images%20and%20Videos/twitter_scraping_demo.mp4)
+[Demo Video](<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7049123559947849728" height="963" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>)
 
 ## Streamlit web URL
 

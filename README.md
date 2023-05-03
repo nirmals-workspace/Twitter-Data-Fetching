@@ -112,17 +112,17 @@ To modify the app, you can:
 
 2. This app would work extremely well and good on local server in every aspect that I have mentioned above. But when you deploy it in cloud you can't use pymongo there to upload the dataset to MongoDB. This is a persistent issue and most developers acknowledge this issue in streamlit community forum and we have to wait a bit more to get this rectified.
 
-    ![The issue mentioned above](https://github.com/Nirmal7781/Twitter_scrapping/blob/68223e395a66f8db5441d3e3ba4e3ada5279ddb9/Error.png)
+    ![The issue mentioned above](https://github.com/Nirmal7781/Twitter_scrapping/blob/ada036b684ec231ac6ce7012cd951fe41980eae1/Related%20Images%20and%20Videos/Error.png)
 
-    ![Sample for streamlit community's acknowledgement of the issue](https://github.com/Nirmal7781/Twitter_scrapping/blob/68223e395a66f8db5441d3e3ba4e3ada5279ddb9/Community%20acknowledgement.png)
+    ![Sample for streamlit community's acknowledgement of the issue](https://github.com/Nirmal7781/Twitter_scrapping/blob/ada036b684ec231ac6ce7012cd951fe41980eae1/Related%20Images%20and%20Videos/Community%20acknowledgement.png)
 
 ## Web App Snap
 
-![Twitter Scraper](https://github.com/Nirmal7781/Twitter_scrapping/blob/888c4af80f2ff4ce6cccdedd992584db1f30cb8f/ts_web_app.png)
+![Twitter Scraper](https://github.com/Nirmal7781/Twitter_scrapping/blob/ada036b684ec231ac6ce7012cd951fe41980eae1/Related%20Images%20and%20Videos/ts_web_app.png)
 
 ## Web App Demo Video
 
-[Demo Video][https://www.linkedin.com/posts/nirmal-kumar-600203263_twitter-datascience-webapp-activity-7049124308266225664-8jWQ?utm_source=share&utm_medium=member_desktop]
+[Demo Video](https://github.com/Nirmal7781/Twitter_scrapping/blob/ada036b684ec231ac6ce7012cd951fe41980eae1/Related%20Images%20and%20Videos/twitter_scraping_demo.mp4)
 
 ## Streamlit web URL
 

@@ -122,7 +122,7 @@ To modify the app, you can:
 
 ## Web App Demo Video
 
-[Demo Video](<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7049123559947849728" height="963" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>)
+![Demo video](https://www.linkedin.com/feed/update/urn:li:video:64248010255998856904/)
 
 ## Streamlit web URL
 

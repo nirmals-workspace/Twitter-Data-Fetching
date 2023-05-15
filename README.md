@@ -53,15 +53,15 @@ Scraping tweets using Streamlit is legal, but it is important to ensure that you
 
 ## User Guide
 
-1. Go to the web app URL in your web browser.
-2. Choose the type of search - **Keyword** or **Hashtag**
-3. Enter the keyword/hashtag of your choice
-4. Set **Start Date** and an **End Date**. By default start date will be 100 days before today
-5. You can also view your selected options under the **Details Pane:** in the sidebar to ensure accuracy.
-6. Select number of tweets to scrape
-7. Click on the **Scrape Tweets** button
-8. Use the two tabs – **SHOW**, **DOWNLOAD** – to view the scraped data then and there and you can download scraped tweets in .csv or .json format
-9. In the sidebar  you can  **UPLOAD DATA TO MONGO_DB**  and you can view the **COLLECTIONS HISTORY**
+    1. Go to the web app URL in your web browser.
+    2. Choose the type of search - **Keyword** or **Hashtag**
+    3. Enter the keyword/hashtag of your choice
+    4. Set **Start Date** and an **End Date**. By default start date will be 100 days before today
+    5. You can also view your selected options under the **Details Pane:** in the sidebar to ensure accuracy.
+    6. Select number of tweets to scrape
+    7. Click on the **Scrape Tweets** button
+    8. Use the two tabs – **SHOW**, **DOWNLOAD** – to view the scraped data then and there and you can download scraped tweets in .csv or .json format
+    9. In the sidebar  you can  **UPLOAD DATA TO MONGO_DB**  and you can view the **COLLECTIONS HISTORY**
 
 ## Developer Guide
 
@@ -69,10 +69,9 @@ To run the app, follow these steps:
 
     1. Clone the repository to your local machine using the following command: git clone [https://github.com/Nirmal7781/Twitter_scrapping.git].
     2. Install the required libraries by running the following command: pip install -r requirements.txt.
-    3. Open the twitter_scraper.py file in a code editor.
-    4. Open a terminal window and navigate to the directory where the app is located using the following command: cd [.py file directory].
-    5. Run the command streamlit run twitter_scraper.py to start the app.
-    6. The app should now be running on a local server. If it doesn't start automatically, you can access it by going to either 
+    3. Open a terminal window and navigate to the directory where the app is located using the following command: cd [.py file directory].
+    4. Run the command [streamlit run twitter_scraper.py] to start the app.
+    5. The app should now be running on a local server. If it doesn't start automatically, you can access it by going to either 
         * Local URL: [http://localhost:8501] or * Network URL: [http://192.168.43.83:8501].
 
 To modify the app, you can:

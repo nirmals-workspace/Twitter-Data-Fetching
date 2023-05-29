@@ -91,16 +91,18 @@ tweets_df = pd.DataFrame(
                          index=range(1, len(tweets_list) + 1)
                          )
 
+if 'tweets_df' not in st.session_state:
+    st.session_state["tweets_df"] = tweets_df
 
 exp = st.expander('See scraped content')
 
-exp.dataframe(tweets_df, use_container_width = True)
+exp.dataframe(st.session_state["tweets_df"], use_container_width = True)
 
 
 col1, col2, col3 = st.columns(3)
 
 # For Downloading csv file
-tweets_csv = tweets_df.to_csv()
+tweets_csv = st.session_state["tweets_df"].to_csv()
 col1.download_button(
                         "Download CSV file", data = tweets_csv,
                         file_name = f'{word.lower()}_tweets.csv'.removeprefix('#'),
@@ -108,7 +110,7 @@ col1.download_button(
                         )
 
 #For Downloading json file
-tweets_json = tweets_df.to_json(orient ='records')
+tweets_json = st.session_state["tweets_df"].to_json(orient ='records')
 col2.download_button(
                         "Download JSON file", data = tweets_json,
                         file_name = f'{word.lower()}_tweets.json'.removeprefix('#'),
@@ -117,7 +119,7 @@ col2.download_button(
 
 #For Downloading excel file
 excel_buffer = io.BytesIO()
-tweets_df.to_excel(excel_buffer, engine ='xlsxwriter', index = False)
+st.session_state["tweets_df"].to_excel(excel_buffer, engine ='xlsxwriter', index = False)
 excel_bytes = excel_buffer.getvalue()
 
 col3.download_button("Download Excel file", data = excel_bytes,
@@ -143,7 +145,7 @@ with st.sidebar:
             # Set the scraped word, date and data
             scraped_word = word.title()
             scraped_date = tday.strftime('%d/%m/%Y')
-            scraped_data = tweets_df.to_dict("records") 
+            scraped_data = st.session_state["tweets_df"].to_dict("records") 
 
             # Create a dictionary with the scraped data
             scraped_doc = {'Scraped Word': scraped_word,

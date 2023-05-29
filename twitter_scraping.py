@@ -136,7 +136,7 @@ with st.sidebar:
     
     @st.cache_resource
     def init_connection():
-        return pymongo.MongoClient(**st.secrets["mongo_db"])
+        return pymongo.MongoClient(st.secrets["mongo_db"]['URI'])
     
     if upload:
         try:

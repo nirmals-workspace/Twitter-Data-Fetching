@@ -76,11 +76,8 @@ if word:
     except Exception as e:
 
         st.error("Twitter server not responding. Please check your internet connection, try again later or contact support.", icon = "⚠️")
-        st.stop()
-
 else:
     st.warning(option, ' field can\'t be left empty', icon = "⚠️")
-    st.stop()
         
 # Creating dataframe out of scraped data:
 

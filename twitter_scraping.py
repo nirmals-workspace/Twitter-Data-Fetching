@@ -9,7 +9,7 @@ from datetime import date, timedelta
 
 # Set page config, title, favicon and app header:
 
-st.set_page_config(page_title='Twitter Scraper', page_icon = 'bird.png',
+st.set_page_config(page_title='Twitter Scraper', page_icon = 'Related Images and Videos/bird.png',
                                                  menu_items = {
                                                 'About': """This web app allows you to scrape tweets from Twitter using the snscrape library and visualize the data using Streamlit.
 This app was developed by Nirmal Kumar, a data science enthusiast and Python developer. The app is intended for educational and research purposes only, and should not be used for any commercial or unethical activities.

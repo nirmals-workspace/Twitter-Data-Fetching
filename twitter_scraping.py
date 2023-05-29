@@ -83,9 +83,11 @@ elif not word:
 else:
     st.write('')
     
+if 'tweets_list' not in st.session_state:
+    st.session_state["tweets_list"] = tweets_list
 
 tweets_df = pd.DataFrame(
-                         tweets_list,
+                         st.session_state["tweets_list"],
                          columns = (["Datetime", "User_ID", "Username", "Language", "TweetContent",
                                      "Source", "URL", "LikeCount", "RetweetCount", "ReplyCount"]),
                          index=range(1, len(tweets_list) + 1)

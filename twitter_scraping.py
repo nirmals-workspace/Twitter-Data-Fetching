@@ -36,7 +36,7 @@ mention(
 
 add_vertical_space(1)
 
-opt, buff = st.columns([4,7])
+opt, col1, col2 = st.columns(3)
 
 if option == "Username":
     word = opt.text_input(label=f'Enter {option}', value="BBCEarth", help="Don't add @ before the username").removeprefix('@')
@@ -46,8 +46,6 @@ elif option == "Hashtag":
     word = opt.text_input(label=f'Enter {option}', value="python", help="Don't add # before the tag").removeprefix('#')
 
 add_vertical_space(1)
-
-col1, col2, buff = st.columns([4,4,3])
 
 tday = date.today()
 
@@ -246,7 +244,7 @@ with st.sidebar.expander("Scraping History"):
         scraped_word = document["Scraped Word"].title()
         scraped_words.append(scraped_word)
 
-    scrape_history = pd.DataFrame(scraped_words, columns=["Scrape History"])
+    scrape_history = pd.DataFrame(scraped_words, columns=["Scraping History"])
     scrape_history.index = range(1, len(scrape_history) + 1)
 
     st.write("\n\n")

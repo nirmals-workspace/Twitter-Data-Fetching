@@ -20,11 +20,13 @@ If you have any questions, comments, or suggestions for the app, please feel fre
 
 st.title(':blue[Twitter Scraper]')
 
+add_vertical_space(2)
+
 # Basic Inputs
 
 option = st.radio('How would you like to search for tweets?', ('Username', 'Keyword', 'Hashtag'), key='option', horizontal = True)
 
-add_vertical_space(2)
+add_vertical_space(1)
 
 mention(
     label="Go to Twitter",

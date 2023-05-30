@@ -24,7 +24,7 @@ st.title(':blue[Twitter Scraper]')
 
 option = st.radio('How would you like to search for tweets?', ('Username', 'Keyword', 'Hashtag'), key='option', horizontal = True)
 
-add_vertical_space(1)
+add_vertical_space(2)
 
 mention(
     label="Go to Twitter",

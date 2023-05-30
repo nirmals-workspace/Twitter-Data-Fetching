@@ -57,7 +57,7 @@ end = end.strftime("%Y-%m-%d")
 
 add_vertical_space(1)
 
-col1, buff = st.columns([4, 7])
+col1, buff = st.columns([4, 8])
 
 no_of_tweets = col1.number_input(
                                 label='How many tweets to scrape?',

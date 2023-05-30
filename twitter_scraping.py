@@ -52,9 +52,6 @@ tday = date.today()
 start = col1.date_input(label="Start date", value=tday - timedelta(days=100), key="start")
 end = col2.date_input(label="End date", value=tday, key='end')
 
-start = start.strftime("%Y-%m-%d")
-end = end.strftime("%Y-%m-%d")
-
 add_vertical_space(1)
 
 col1, buff = st.columns([4, 8])

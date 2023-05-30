@@ -10,6 +10,7 @@ import io
 
 # Page Config
 
+
 st.set_page_config(page_title='Twitter Scraper', page_icon = 'Related Images and Videos/bird.png', layout = 'wide',
                                                  menu_items = {
                                                 'About': """This web app allows you to scrape tweets from Twitter using the snscrape library and visualize the data using Streamlit.

@@ -4,3 +4,4 @@ streamlit==1.22.0
 XlsxWriter==3.1.0
 pymongo==4.3.3
 pandas==2.0.1
+pytz==2023.3

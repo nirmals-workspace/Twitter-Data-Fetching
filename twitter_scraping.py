@@ -1,12 +1,13 @@
 from streamlit_extras.add_vertical_space import add_vertical_space
 from streamlit_extras.buy_me_a_coffee import button
+from datetime import date, datetime, timedelta
 from streamlit_extras.mention import mention
 import snscrape.modules.twitter as sntwitter
-from datetime import date, datetime, timedelta
 from collections import Counter
 import streamlit as st
 import pandas as pd
 import pymongo
+import pytz
 import io
 
 # Page Config
@@ -98,7 +99,12 @@ def create_df():
 def upload_to_mongodb():
     try:
         scraped_word = word.title().removeprefix('#').removeprefix('@')
-        scraped_date = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+        
+        local_now = datetime.now()
+        ist = pytz.timezone('Asia/Kolkata')
+        ist_now = local_now.astimezone(ist)
+        scraped_date = ist_now.strftime("%d/%m/%Y %H:%M:%S")
+        
         scraped_data = tweets_df.to_dict("records")
 
         scraped_doc = {

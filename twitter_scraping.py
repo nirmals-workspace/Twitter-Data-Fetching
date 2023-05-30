@@ -3,6 +3,7 @@ from streamlit_extras.buy_me_a_coffee import button
 from streamlit_extras.mention import mention
 import snscrape.modules.twitter as sntwitter
 from datetime import date, timedelta
+from collections import Counter
 import streamlit as st
 import pandas as pd
 import pymongo
@@ -63,6 +64,7 @@ no_of_tweets = col1.number_input(
                                 )
 
 tweets_list = []
+error_counter = Counter()
 
 add_vertical_space(1)
 
@@ -96,7 +98,7 @@ def create_df():
 def upload_to_mongodb():
     try:
         scraped_word = word.title().removeprefix('#').removeprefix('@')
-        scraped_date = tday.strftime("%d/%m/%Y")
+        scraped_date = tday.strftime("%d/%m/%Y %H:%M:%S")
         scraped_data = tweets_df.to_dict("records")
 
         scraped_doc = {
@@ -120,41 +122,56 @@ def fetch_data():
     client = pymongo.MongoClient(st.secrets['mongo_db']['URI'])
     mydb = client["Twitter"]
     collection = mydb["tweets_collection"]
-    last_document = collection.find().sort("_id", -1).limit(1)
-    last_word = last_document[0]["Scraped Word"]
+    last_document = collection.find().sort("Scraped Date", pymongo.DESCENDING).limit(1)
+    last_word = last_document[0]["Scraped Word"] if last_document else None
     if last_document:
         return pd.DataFrame(last_document[0]["Scraped Data"]), last_word
     else:
         return pd.DataFrame(), last_word
-
 
 # Scraping Part
 
 if word and scrape:
     try:
         if option == 'Username':
-            for i,tweet in enumerate(sntwitter.TwitterSearchScraper(f'from:{word} since:{start} until:{end}').get_items()):
-                if i > no_of_tweets - 1:
-                    break
-                scraped_tweet = scrape_tweets(tweet)
-                tweets_list.append(scraped_tweet)
-                
+            i = 0
+            while len(tweets_list) < no_of_tweets:
+                try:
+                    tweet = next(sntwitter.TwitterSearchScraper(f'from:{word} since:{start} until:{end}').get_items())
+                    scraped_tweet = scrape_tweets(tweet)
+                    tweets_list.append(scraped_tweet)
+                    i += 1
+                except Exception:
+                    error_counter['Scraping Errors'] += 1
+                    if i >= no_of_tweets + error_counter['Scraping Errors']:
+                        break
+
         elif option == 'Keyword':
-            for i, tweet in enumerate(
-                    sntwitter.TwitterSearchScraper(f'{word.lower()} since:{start} until:{end}').get_items()):
-                if i > no_of_tweets - 1:
-                    break
-                scraped_tweet = scrape_tweets(tweet)
-                tweets_list.append(scraped_tweet)
+            i = 0
+            while len(tweets_list) < no_of_tweets:
+                try:
+                    tweet = next(sntwitter.TwitterSearchScraper(f'{word.lower()} since:{start} until:{end}').get_items())
+                    scraped_tweet = scrape_tweets(tweet)
+                    tweets_list.append(scraped_tweet)
+                    i += 1
+                except Exception:
+                    error_counter['Scraping Errors'] += 1
+                    if i >= no_of_tweets + error_counter['Scraping Errors']:
+                        break
 
         elif option == 'Hashtag':
-            for i, tweet in enumerate(
-                    sntwitter.TwitterHashtagScraper(f'{word.lower()} since:{start} until:{end}').get_items()):
-                if i > no_of_tweets - 1:
-                    break
-                scraped_tweet = scrape_tweets(tweet)
-                tweets_list.append(scraped_tweet)
-                
+            i = 0
+            while len(tweets_list) < no_of_tweets:
+                try:
+                    tweet = next(sntwitter.TwitterHashtagScraper(f'{word.lower()} since:{start} until:{end}').get_items())
+                    scraped_tweet = scrape_tweets(tweet)
+                    tweets_list.append(scraped_tweet)
+                    i += 1
+                except Exception:
+                    error_counter['Scraping Errors'] += 1
+                    if i >= no_of_tweets + error_counter['Scraping Errors']:
+                        break
+
         tweets_df = create_df()
         upload_to_mongodb()
         st.success(body='Tweets scraped successfully...')
@@ -228,12 +245,11 @@ with tab3:
 # Document history in the sidebar
 
 with st.sidebar.expander("Scraping History"):
-    
     client = pymongo.MongoClient(st.secrets['mongo_db']['URI'])
     mydb = client["Twitter"]
     collection = mydb["tweets_collection"]
 
-    last_5_documents = collection.find().sort("_id", -1).limit(5)
+    last_5_documents = collection.find().sort("Scraped Date", pymongo.DESCENDING).limit(5)
 
     scraped_words = []
 
@@ -246,7 +262,6 @@ with st.sidebar.expander("Scraping History"):
 
     st.write("\n\n")
     st.dataframe(scrape_history, use_container_width=True)
-
 
 with st.sidebar:
     add_vertical_space(14)

@@ -25,7 +25,9 @@ add_vertical_space(2)
 
 # Basic Inputs
 
-option = st.selectbox(label = 'How would you like to search for tweets?', options = ['Username', 'Keyword', 'Hashtag'])
+col1, buff = st.columns([3, 6.5])
+
+option = col1.selectbox(label = 'How would you like to search for tweets?', options = ['Username', 'Keyword', 'Hashtag'])
 
 add_vertical_space(1)
 

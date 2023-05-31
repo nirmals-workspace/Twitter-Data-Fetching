@@ -3,7 +3,6 @@ from streamlit_extras.buy_me_a_coffee import button
 from datetime import date, datetime, timedelta
 from streamlit_extras.mention import mention
 import snscrape.modules.twitter as sntwitter
-from collections import Counter
 import streamlit as st
 import pandas as pd
 import pymongo
@@ -26,7 +25,7 @@ add_vertical_space(2)
 
 # Basic Inputs
 
-option = st.radio('How would you like to search for tweets?', ('Username', 'Keyword', 'Hashtag'), key='option', horizontal = True)
+option = st.selectbox(label = 'How would you like to search for tweets?', options = ['Username', 'Keyword', 'Hashtag'])
 
 add_vertical_space(1)
 
@@ -41,11 +40,11 @@ add_vertical_space(1)
 opt, col1, col2 = st.columns(3)
 
 if option == "Username":
-    word = opt.text_input(label=f'Enter {option}', value="BBCEarth", help="Don't add @ before the username").removeprefix('@')
+    word = opt.text_input(label=f'Enter {option}', value="BBCEarth").removeprefix('@')
 elif option == "Keyword":
     word = opt.text_input(label=f'Enter {option}', value="python")
 elif option == "Hashtag":
-    word = opt.text_input(label=f'Enter {option}', value="python", help="Don't add # before the tag").removeprefix('#')
+    word = opt.text_input(label=f'Enter {option}', value="python").removeprefix('#')
 
 add_vertical_space(1)
 
@@ -65,7 +64,6 @@ no_of_tweets = col1.number_input(
                                 )
 
 tweets_list = []
-error_counter = Counter()
 
 add_vertical_space(1)
 
@@ -73,10 +71,10 @@ scrape = st.button(label="Scrape Tweets", key='scrape')
 
 # Function Definitions
 
-@st.cache_data(show_spinner=False)
+
 def scrape_tweets(tweet):
     date = tweet.date.strftime('%d/%m/%Y %H:%M:%S')
-    user_id = tweet.user.id
+    user_id = str(tweet.user.id)
     user = tweet.user.username
     language = tweet.lang
     content = tweet.rawContent
@@ -139,48 +137,73 @@ def fetch_data():
 
 if word and scrape:
     try:
+        i = 0
+        error_counter = 0
+
         if option == 'Username':
-            i = 0
-            while len(tweets_list) < no_of_tweets:
-                try:
-                    tweet = next(sntwitter.TwitterSearchScraper(f'from:{word} since:{start} until:{end}').get_items())
-                    scraped_tweet = scrape_tweets(tweet)
-                    tweets_list.append(scraped_tweet)
-                    i += 1
-                except Exception:
-                    error_counter['Scraping Errors'] += 1
-                    if i >= no_of_tweets + error_counter['Scraping Errors']:
-                        break
-
+            scraper = sntwitter.TwitterSearchScraper(f'from:{word} since:{start} until:{end}')
         elif option == 'Keyword':
-            i = 0
-            while len(tweets_list) < no_of_tweets:
-                try:
-                    tweet = next(sntwitter.TwitterSearchScraper(f'{word.lower()} since:{start} until:{end}').get_items())
-                    scraped_tweet = scrape_tweets(tweet)
-                    tweets_list.append(scraped_tweet)
-                    i += 1
-                except Exception:
-                    error_counter['Scraping Errors'] += 1
-                    if i >= no_of_tweets + error_counter['Scraping Errors']:
-                        break
-
+            scraper = sntwitter.TwitterSearchScraper(f'{word.lower()} -from:{word.lower()} since:{start} until:{end} lang:en')
         elif option == 'Hashtag':
-            i = 0
-            while len(tweets_list) < no_of_tweets:
-                try:
-                    tweet = next(sntwitter.TwitterHashtagScraper(f'{word.lower()} since:{start} until:{end}').get_items())
+            scraper = sntwitter.TwitterHashtagScraper(f'{word.lower()} since:{start} until:{end}')
+
+        for tweet in scraper.get_items():
+            try:
+                if option == 'Username':
                     scraped_tweet = scrape_tweets(tweet)
                     tweets_list.append(scraped_tweet)
                     i += 1
+                    if i >= no_of_tweets:
+                        break
+                elif option == 'Keyword':
+                    if word.lower() in tweet.content.lower() and f'#{word.lower()}' not in tweet.content.lower():
+                        scraped_tweet = scrape_tweets(tweet)
+                        tweets_list.append(scraped_tweet)
+                        i += 1
+                        if i >= no_of_tweets:
+                            break
+                elif option == 'Hashtag':
+                    scraped_tweet = scrape_tweets(tweet)
+                    tweets_list.append(scraped_tweet)
+                    i += 1
+                    if i >= no_of_tweets:
+                        break
+            except Exception:
+                error_counter += 1
+
+        while len(tweets_list) < no_of_tweets and error_counter < 1000:
+            for tweet in scraper.get_items():
+                try:
+                    if option == 'Username':
+                        scraped_tweet = scrape_tweets(tweet)
+                        tweets_list.append(scraped_tweet)
+                        i += 1
+                        if i >= no_of_tweets:
+                            break
+                    elif option == 'Keyword':
+                        if word.lower() in tweet.content.lower() and f'#{word.lower()}' not in tweet.content.lower():
+                            scraped_tweet = scrape_tweets(tweet)
+                            tweets_list.append(scraped_tweet)
+                            i += 1
+                            if i >= no_of_tweets:
+                                break
+                    elif option == 'Hashtag':
+                        scraped_tweet = scrape_tweets(tweet)
+                        tweets_list.append(scraped_tweet)
+                        i += 1
+                        if i >= no_of_tweets:
+                            break
                 except Exception:
-                    error_counter['Scraping Errors'] += 1
-                    if i >= no_of_tweets + error_counter['Scraping Errors']:
+                    error_counter += 1
+                    if error_counter >= 1000:
                         break
 
-        tweets_df = create_df()
-        upload_to_mongodb()
-        st.success(body='Tweets scraped successfully...')
+        if error_counter >= 1000:
+            st.warning(body='Too many empty pages. Twitter API rate limit exceeded.', icon='⚠️')
+        else:
+            tweets_df = create_df()
+            upload_to_mongodb()
+            st.success(body='Tweets scraped successfully...')
         
     except Exception:
         st.error(
@@ -270,5 +293,5 @@ with st.sidebar.expander("Scraping History"):
     st.dataframe(scrape_history, use_container_width=True)
 
 with st.sidebar:
-    add_vertical_space(14)
+    add_vertical_space(9)
     button('nirmal.datageek', emoji='🕮', text = 'Buy me a book', floating = False)

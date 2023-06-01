@@ -119,7 +119,7 @@ To modify the app, you can:
 
 ## Web App Snap
 
-![Twitter Scraper](https://github.com/Nirmal7781/Twitter_scrapping/blob/ada036b684ec231ac6ce7012cd951fe41980eae1/Related%20Images%20and%20Videos/ts_web_app.png)
+![Twitter Scraper](https://github.com/nirmal-data-scientist/Twitter_Scraping/blob/4e0bad02945df58dce82304a27a51b0a87d1ecfe/Related%20Images%20and%20Videos/ts_web_app.png)
 
 ## Web App Demo Video
 

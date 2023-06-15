@@ -35,7 +35,7 @@ PyMongo is a Python distribution containing tools for working with MongoDB. We u
 
 #### Pandas
 
-Pandas is a popular Python library used for data manipulation and analysis. We used pandas to convert scraped tweets list into dataframe and to convert dataframe into .csv, .json and .dict formats
+Pandas is a popular Python library used for data manipulation and analysis. We used pandas to convert scraped tweets list into dataframe and to convert dataframe into .csv, .json and .dict formats.
 
 ## Ethical perspective of scraping tweets using snscrape
 

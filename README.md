@@ -1,6 +1,6 @@
 # Twitter scraping web app
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://nirmal-data-scientist-twitter-data-fetching.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://twitter-data-fetching.streamlit.app/)
 
 Twitter is a powerful platform for accessing real-time information, and it can be a valuable source of data for a variety of applications. However, collecting and analyzing data from Twitter can be a challenging task, especially for those without specialized technical skills. In this context, a web app that simplifies the process of scraping Twitter data and provides useful features for analyzing and visualizing the data can be a useful tool for researchers, journalists, businesses, and individuals. This is an open source web app that allows you to scrape tweets from Twitter using the snscrape library, visualize the data using Streamlit and upload the scraped content to Mongo DB for future usage. It has been developed by me, Nirmal Kumar, a Data science enthusiast and Python developer. The app is intended for educational and research purposes only, and should not be used for any commercial or unethical activities.
 
@@ -127,7 +127,7 @@ To modify the app, you can:
 
 ## Streamlit web URL
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://nirmal-data-scientist-twitter-data-fetching.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://twitter-data-fetching.streamlit.app/)
 
 ## Disclaimer
 

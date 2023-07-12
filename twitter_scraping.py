@@ -19,12 +19,14 @@ This app was developed by Nirmal Kumar, a data science enthusiast and Python dev
 If you have any questions, comments, or suggestions for the app, please feel free to contact me at [nirmal.works@outlook.com]."""
                                                 })
 
-main_menu = """
-            #MainMenu {
-              visibility: hidden;
-            }
-            """
-st.markdown(main_menu, unsafe_allow_html=True)
+hide_streamlit_style = """
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+</style>
+
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
 st.title(':blue[Twitter Scraper]')
 

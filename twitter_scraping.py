@@ -19,14 +19,6 @@ This app was developed by Nirmal Kumar, a data science enthusiast and Python dev
 If you have any questions, comments, or suggestions for the app, please feel free to contact me at [nirmal.works@outlook.com]."""
                                                 })
 
-hide_streamlit_style = """
-<style>
-.css-hi6a2p {padding-top: 0rem;}
-</style>
-
-"""
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
 st.markdown(
     """
     <style>

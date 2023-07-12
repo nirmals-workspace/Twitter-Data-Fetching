@@ -18,6 +18,15 @@ st.set_page_config(page_title='Twitter Scraper', page_icon = 'Related Images and
 This app was developed by Nirmal Kumar, a data science enthusiast and Python developer. The app is intended for educational and research purposes only, and should not be used for any commercial or unethical activities.
 If you have any questions, comments, or suggestions for the app, please feel free to contact me at [nirmal.works@outlook.com]."""
                                                 })
+
+hide_streamlit_style = """
+<style>
+.css-hi6a2p {padding-top: 0rem;}
+</style>
+
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 st.markdown(
     """
     <style>

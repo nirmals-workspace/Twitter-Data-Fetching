@@ -19,6 +19,19 @@ This app was developed by Nirmal Kumar, a data science enthusiast and Python dev
 If you have any questions, comments, or suggestions for the app, please feel free to contact me at [nirmal.works@outlook.com]."""
                                                 })
 
+st.markdown(
+    """
+    <style>
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
+    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
+    .viewerBadge_text__1JaDK {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+    )
+
 st.title(':blue[Twitter Scraper]')
 
 add_vertical_space(2)

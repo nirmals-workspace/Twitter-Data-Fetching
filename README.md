@@ -113,6 +113,8 @@ To modify the app, you can:
 
 2. This app would work extremely well and good on local server in every aspect that I have mentioned above. But when you deploy it in cloud you can't use pymongo there to upload the dataset to MongoDB. This is a persistent issue and most developers acknowledge this issue in streamlit community forum and we have to wait a bit more to get this rectified.
 
+    **IMPORTANT NOTE:** The functionality to upload data to MongoDB using `pymongo` is confirmed to be **unreliable or non-functional when this application is deployed on Streamlit Cloud**. If MongoDB integration is a critical requirement for you, it is **strongly recommended to run this application locally** where `pymongo` can interact with your MongoDB instance without such cloud-specific limitations.
+
     ![The issue mentioned above](https://github.com/Nirmal7781/Twitter_scrapping/blob/ada036b684ec231ac6ce7012cd951fe41980eae1/Related%20Images%20and%20Videos/Error.png)
 
     ![Sample for streamlit community's acknowledgement of the issue](https://github.com/Nirmal7781/Twitter_scrapping/blob/ada036b684ec231ac6ce7012cd951fe41980eae1/Related%20Images%20and%20Videos/Community%20acknowledgement.png)

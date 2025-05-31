@@ -1,4 +1,4 @@
-git+https://github.com/JustAnotherArchivist/snscrape.git
+git+https://github.com/JustAnotherArchivist/snscrape.git@v0.6.2.20230320#egg=snscrape
 streamlit_extras==0.2.7
 streamlit==1.22.0
 XlsxWriter==3.1.0
